@@ -7,6 +7,9 @@ services:
     build:
       context: .
       dockerfile: ${BUILD_FILE}
+      args:
+        DEBIAN_VERSION: ${DEBIAN_VERSION}
+        SOAPUI_VERSION: ${SOAPUI_VERSION}
     image: ${IMAGE_NAME}:${SOAPUI_VERSION}
     environment:
     - DISPLAY
