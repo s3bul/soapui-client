@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  soapui:
+    privileged: true
+    network_mode: 'host'
+    build:
+      context: .
+      dockerfile: ${BUILD_FILE}
+    image: ${IMAGE_NAME}:${SOAPUI_VERSION}
+    environment:
+    - DISPLAY
+    volumes:
+    - .docker/soapui/soapui-settings.xml:/home/app/soapui-settings.xml
+    - .docker/soapui/default-soapui-workspace.xml:/home/app/default-soapui-workspace.xml
