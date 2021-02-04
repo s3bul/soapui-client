@@ -20,6 +20,8 @@ RUN apt-get update && apt-get install --no-install-recommends -y ca-certificates
     echo "-Dsoapui.logroot=${SOAPUI_DIR}/logs/" >> \
     ${SOAPUI_DIR}/bin/SoapUI-${SOAPUI_VERSION}.vmoptions
 
+COPY ./docker-entrypoint.sh ${SOAPUI_DIR}/bin
+
 ARG APP_USER=app
 ARG APP_USER_ID=1000
 
@@ -31,12 +33,16 @@ RUN adduser -q --uid ${APP_USER_ID} --disabled-password ${APP_USER} && \
     addgroup ${APP_USER} root && \
     addgroup root ${APP_USER} && \
     chmod g+rwxs ${HOME_APP} ${SOAPUI_DIR}/logs && \
-    mkdir -p ${HOME_APP}/.soapuios/plugins && \
+    mkdir -p ${HOME_APP}/.soapuios/plugins ${HOME_APP}/.soapuios/config && \
     cp -r /root/.soapuios/plugins ${HOME_APP}/.soapuios && \
     chown -R ${APP_USER}:0 ${HOME_APP}
 
 USER ${APP_USER}:0
 
-WORKDIR ${HOME_APP}
+WORKDIR ${SOAPUI_DIR}
 
-ENTRYPOINT ["soapui"]
+ENTRYPOINT ["bin/docker-entrypoint.sh"]
+
+CMD ["run"]
+
+VOLUME ["${HOME_APP}/.soapuios/config"]

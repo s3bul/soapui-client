@@ -14,5 +14,6 @@ services:
     environment:
     - DISPLAY
     volumes:
-    - .docker/soapui/soapui-settings.xml:/home/app/soapui-settings.xml
-    - .docker/soapui/default-soapui-workspace.xml:/home/app/default-soapui-workspace.xml
+    - ./docker-entrypoint.sh:/usr/local/SmartBear/SoapUI-${SOAPUI_VERSION}/bin/docker-entrypoint.sh:ro
+    - .docker/soapui/config:/home/app/.soapuios/config
+    - .docker/soapui/files:/home/app/files

@@ -1,2 +1,7 @@
 /.idea/
+/.docker/soapui/config/*
+!.docker/soapui/config/.gitkeep
+/.docker/soapui/files/*
+!.docker/soapui/files/.gitkeep
 SoapUI-*.sh
+.env.*
