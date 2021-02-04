@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <con:soapui-settings xmlns:con="http://eviware.com/soapui/config">
     <con:setting id="WsdlSettings@excluded-types">
-        <con:entry
-            xmlns:con="http://eviware.com/soapui/config">schema@http://www.w3.org/2001/XMLSchema
-        </con:entry>
+        <con:entry>schema@http://www.w3.org/2001/XMLSchema</con:entry>
     </con:setting>
     <con:setting id="WsdlSettings@name-with-binding">true</con:setting>
     <con:setting id="HttpSettings@http_version">1.1</con:setting>
