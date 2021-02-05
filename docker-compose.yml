@@ -10,7 +10,7 @@ services:
       args:
         DEBIAN_VERSION: ${DEBIAN_VERSION}
         SOAPUI_VERSION: ${SOAPUI_VERSION}
-    image: ${IMAGE_NAME}:${SOAPUI_VERSION}
+    image: ${BUILD_IMAGE_NAME}:${SOAPUI_VERSION}
     environment:
     - DISPLAY
     volumes:
